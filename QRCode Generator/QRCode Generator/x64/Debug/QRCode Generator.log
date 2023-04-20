@@ -1,0 +1,4 @@
+﻿  main.cpp
+D:\Visual Studio\QRCode Generator\QRCode Generator\main.cpp(95,38): warning C4312: 'type cast': conversion from 'const int' to 'HMENU' of greater size
+D:\Visual Studio\QRCode Generator\QRCode Generator\main.cpp(100,1): warning C4312: 'type cast': conversion from 'const int' to 'HMENU' of greater size
+  QRCode Generator.vcxproj -> D:\Visual Studio\QRCode Generator\x64\Debug\QRCode Generator.exe
