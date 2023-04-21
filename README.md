@@ -1,3 +1,3 @@
 # QRCode-Generator
 
-![image](https://user-images.githubusercontent.com/54809176/233486473-86d0001d-5097-4152-aaa3-4ad3b21aa1a2.png)
+![image](https://user-images.githubusercontent.com/54809176/233684246-da917077-a74b-433f-a720-4f08ca31a9c9.png)
