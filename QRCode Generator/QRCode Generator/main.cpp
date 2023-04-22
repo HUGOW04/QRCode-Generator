@@ -11,7 +11,7 @@ const char g_szClassName[] = "myQRCodeWindow";
 const char g_szWindowTitle[] = "QR Code Generator";
 
 // Window dimensions
-const int g_windowWidth = 400;
+const int g_windowWidth = 500;
 const int g_windowHeight = 500;
 const int g_inputBoxWidth = 350;
 const int g_inputBoxHeight = 50;
@@ -217,7 +217,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
         WS_EX_CLIENTEDGE,
         g_szClassName,
         "QR Code Generator",
-        WS_OVERLAPPEDWINDOW,
+        WS_CAPTION | WS_SYSMENU | WS_VISIBLE | WS_MINIMIZEBOX,
         CW_USEDEFAULT, CW_USEDEFAULT, g_windowWidth, g_windowHeight,
         NULL, NULL, hInstance, NULL);
 
