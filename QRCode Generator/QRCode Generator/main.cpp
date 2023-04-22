@@ -20,6 +20,8 @@ const int g_qrCodeSize = 250;
 // ID for the input box and the generate button
 const int g_inputBoxId = 100;
 const int g_generateButtonId = 101;
+const int g_fileDialogButtonId = 102;
+
 
 // Function to generate the QR code bitmap
 HBITMAP GenerateQRCodeBitmap(const std::string& data)
@@ -98,6 +100,9 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
         CreateWindow("BUTTON", "Generate", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
             (g_windowWidth - g_inputBoxWidth) / 2, 90, g_inputBoxWidth, 30,
             hwnd, (HMENU)g_generateButtonId, GetModuleHandle(NULL), NULL);
+        CreateWindow("BUTTON", "Select File", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON,
+            (g_windowWidth - g_inputBoxWidth) / 2, 120, g_inputBoxWidth, 30,
+            hwnd, (HMENU)g_fileDialogButtonId, GetModuleHandle(NULL), NULL);
         break;
     }
     case WM_COMMAND:
@@ -124,6 +129,26 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
             UpdateWindow(hwnd);
             break;
         }
+        case g_fileDialogButtonId:
+        {
+            OPENFILENAME ofn;
+            char szFileName[MAX_PATH] = "";
+            ZeroMemory(&ofn, sizeof(ofn));
+            ofn.lStructSize = sizeof(ofn);
+            ofn.hwndOwner = hwnd;
+            ofn.lpstrFilter = "Text Files (*.txt)\0*.txt\0All Files (*.*)\0*.*\0";
+            ofn.lpstrFile = szFileName;
+            ofn.nMaxFile = MAX_PATH;
+            ofn.Flags = OFN_EXPLORER | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
+            ofn.lpstrDefExt = "txt";
+            if (GetOpenFileName(&ofn))
+            {
+                // Display the selected file name in the input box
+                SetDlgItemText(hwnd, g_inputBoxId, szFileName);
+            }
+            break;
+        }
+
         }
         break;
     case WM_PAINT:
